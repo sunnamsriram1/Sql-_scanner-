@@ -1,9 +1,3 @@
-# 🛡️ SqlAutoScanner — Auto SQLMap Crawler
-
-Simple tool to crawl a website using `sqlmap`, extract vulnerable-style URLs (like `?id=`), and save them to a file.
-
----
-
 ## 📦 Setup
 
 ```bash

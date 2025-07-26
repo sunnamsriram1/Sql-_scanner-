@@ -23,15 +23,13 @@ fi
 # Step 2: Move custom scripts into sqlmap folder
 echo -e "${YELLOW}📁 Copying custom files to sqlmap directory...${RESET}"
 
-cp Sql.sh sqlmap/
-cp README.md sqlmap/
-cp crawled_urls.txt sqlmap/
-cp -r crawl_tmp sqlmap/
+cp Sqlsimpl.sh sqlmap/
 
 echo -e "${GREEN}[✓] Files copied successfully to sqlmap directory.${RESET}"
 
 # Step 3: Give permissions
-chmod +x sqlmap/Sql.sh
+chmod +x sqlmap/Sqlsimpl.sh
+bash Sqlsimpl.sh
 
 echo -e "${GREEN}✅ Installation completed. Run using:${RESET}"
 echo -e "${YELLOW}    cd sqlmap && bash Sql.sh${RESET}"

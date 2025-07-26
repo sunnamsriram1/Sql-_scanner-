@@ -1,16 +1,37 @@
 #!/data/data/com.termux/files/usr/bin/bash
 
-echo "🔄 Checking for sqlmap..."
+# 🛠️ Auto Installer for SQLMap + Custom Scripts (By Sriram)
+# ✅ This script installs sqlmap from GitHub and copies custom scripts into it.
 
-# If not already cloned, then clone it
+# 🎨 Colors
+GREEN="\033[1;32m"
+RED="\033[1;31m"
+YELLOW="\033[1;33m"
+RESET="\033[0m"
+
+echo -e "${YELLOW}🔄 Installing/Updating SQLMap...${RESET}"
+
+# Step 1: Clone sqlmap if not exists
 if [ ! -d "sqlmap" ]; then
-    echo "📥 Cloning sqlmap..."
-    git clone --depth 1 https://github.com/sqlmapproject/sqlmap.git
+    git clone --depth=1 https://github.com/sqlmapproject/sqlmap.git
+    echo -e "${GREEN}[✓] SQLMap cloned successfully.${RESET}"
 else
-    echo "✅ sqlmap folder already exists. Pulling latest update..."
-    cd sqlmap
-    git pull
-    cd ..
+    echo -e "${YELLOW}[~] SQLMap already exists. Pulling latest changes...${RESET}"
+    cd sqlmap && git pull && cd ..
 fi
 
-echo "✅ sqlmap ready to use!"
+# Step 2: Move custom scripts into sqlmap folder
+echo -e "${YELLOW}📁 Copying custom files to sqlmap directory...${RESET}"
+
+cp Sql.sh sqlmap/
+cp README.md sqlmap/
+cp crawled_urls.txt sqlmap/
+cp -r crawl_tmp sqlmap/
+
+echo -e "${GREEN}[✓] Files copied successfully to sqlmap directory.${RESET}"
+
+# Step 3: Give permissions
+chmod +x sqlmap/Sql.sh
+
+echo -e "${GREEN}✅ Installation completed. Run using:${RESET}"
+echo -e "${YELLOW}    cd sqlmap && bash Sql.sh${RESET}"

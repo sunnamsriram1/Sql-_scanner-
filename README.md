@@ -9,5 +9,6 @@ Simple tool to crawl a website using `sqlmap`, extract vulnerable-style URLs (li
 ```bash
 pkg install git python -y
 git clone https://github.com/sunnamsriram1/Sql-_scanner-.git
-cd SqlAutoScanner
-bash install_update.sh
+cd Sql-_scanner-
+bash Install_update.sh
+bash Sqlsimpl.sh
